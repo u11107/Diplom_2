@@ -12,9 +12,14 @@ public class User {
     private String name;
 
 
-    public User(String email, String password) {
-        this.email = email;
-        this.password = password;
+    public User() {}
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' + '}';
     }
 
 }

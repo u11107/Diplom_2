@@ -1,4 +1,4 @@
-package method;
+package client;
 
 import base.BaseClient;
 import io.qameta.allure.Step;
@@ -10,9 +10,8 @@ import java.util.ArrayList;
 import static io.restassured.RestAssured.given;
 
 public class OrderClient extends BaseClient {
-    private final String ENDPOINT = "/api/orders";
 
-    @Step("Get ingredients id")
+    @Step("Получение id ингридиентов")
     public ArrayList<String> getIngredientsId() {
         return given()
                 .spec(BaseClient.getBaseSpec())
@@ -20,7 +19,7 @@ public class OrderClient extends BaseClient {
                 .path("data._id");
     }
 
-    @Step("Create order")
+    @Step("Создание заказа")
     public Response createOrder(Order data, String accessToken) {
         return given()
                 .spec(BaseClient.getBaseSpec())
@@ -31,7 +30,7 @@ public class OrderClient extends BaseClient {
                 .post(BASEURL + ENDPOINT);
     }
 
-    @Step("Get user's orders")
+    @Step("Получение заказов пользователя")
     public Response getUserOrders(String accessToken) {
         return given()
                 .spec(BaseClient.getBaseSpec())

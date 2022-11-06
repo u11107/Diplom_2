@@ -1,19 +1,19 @@
 package generateData;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import io.qameta.allure.Step;
 import model.User;
 import net.datafaker.Faker;
-@Data
-@AllArgsConstructor
-public class DataGenerate {
 
-    public static User createUser() {
+
+public class UserFaker {
+
+    @Step("Create random user data")
+    public static User getRandomUserData() {
         Faker faker = new Faker();
-        var email = faker.internet().emailAddress();
-        var password  =faker.password().toString();
-        var name = faker.name().firstName();
-        return new User(email, password, name);
+        return new User(
+                faker.internet().emailAddress(),
+                faker.internet().password(),
+                faker.name().firstName());
     }
 
 

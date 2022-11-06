@@ -1,4 +1,4 @@
-package method;
+package client;
 
 import base.BaseClient;
 import io.qameta.allure.Step;
@@ -8,7 +8,7 @@ import model.User;
 import static io.restassured.RestAssured.given;
 
 public class UserClient extends BaseClient{
-    private final String ENDPOINT = "/api/auth";
+
 
     @Step("Create user")
     public Response createUser(User user) {
@@ -17,7 +17,7 @@ public class UserClient extends BaseClient{
                 .and()
                 .body(user)
                 .when()
-                .post(BASEURL + ENDPOINT + "/register");
+                .post(BASEURL + ENDPOINT_AUT + "/register");
     }
 
     @Step("Delete user")
@@ -25,7 +25,7 @@ public class UserClient extends BaseClient{
         return given()
                 .spec(BaseClient.getBaseSpec())
                 .header("Authorization", accessToken)
-                .delete(BASEURL + ENDPOINT + "/user");
+                .delete(BASEURL + ENDPOINT_AUT + "/user");
     }
 
 
@@ -36,7 +36,7 @@ public class UserClient extends BaseClient{
                 .and()
                 .body(user)
                 .when()
-                .post(BASEURL + ENDPOINT + "/login");
+                .post(BASEURL + ENDPOINT_AUT + "/login");
     }
 
     @Step("Change user data")
@@ -47,6 +47,6 @@ public class UserClient extends BaseClient{
                 .and()
                 .body(user)
                 .when()
-                .patch(BASEURL + ENDPOINT + "/user");
+                .patch(BASEURL + ENDPOINT_AUT + "/user");
     }
 }
